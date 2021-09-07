@@ -1,13 +1,18 @@
 <?php namespace Octobro\Recaptcha;
 
-use Backend;
+use Backend, Event, View, Input;
+use ApplicationException;
 use System\Classes\PluginBase;
+use Octobro\Recaptcha\Models\Settings;
+use Octobro\Recaptcha\Classes\RecaptchaAuthorizer;
 
 /**
  * Recaptcha Plugin Information File
  */
 class Plugin extends PluginBase
 {
+    public $elevated = true;
+    
     /**
      * Returns information about this plugin.
      *
@@ -40,7 +45,18 @@ class Plugin extends PluginBase
      */
     public function boot()
     {
-
+        Event::listen('backend.auth.extendSigninView', function($controller) {
+            $settings = Settings::instance();
+            if ($settings->backend_captcha) {
+                return View::make("octobro.recaptcha::recaptcha", ['settings'=>$settings]);
+            }
+        });
+        Event::listen('backend.user.login', function ($user) {
+            $settings = Settings::instance();
+            if ($settings->backend_captcha) {
+                RecaptchaAuthorizer::instance()->verify();
+            }
+        });
     }
 
     public function registerSettings()
