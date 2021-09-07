@@ -1,6 +1,6 @@
 <?php namespace Octobro\Recaptcha;
 
-use Backend, Event, View, Input;
+use Backend, Event, View;
 use ApplicationException;
 use System\Classes\PluginBase;
 use Octobro\Recaptcha\Models\Settings;
@@ -80,10 +80,10 @@ class Plugin extends PluginBase
      */
     public function registerComponents()
     {
-        return []; // Remove this line to activate
+        // return []; // Remove this line to activate
 
         return [
-            'Octobro\Recaptcha\Components\MyComponent' => 'myComponent',
+            'Octobro\Recaptcha\Components\MyComponent' => 'recaptcha',
         ];
     }
 

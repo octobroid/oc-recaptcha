@@ -1,13 +1,13 @@
-<?php namespace Alxy\Captcha\Components;
+<?php namespace Octobro\Recaptcha\Components;
 
 use Cms\Classes\ComponentBase;
-use Alxy\Captcha\Models\Settings;
+use Octobro\Recaptcha\Models\Settings;
 
 class Captcha extends ComponentBase
 {
     /**
      * Settings instance
-     * @var Alxy\Captcha\Models\Settings
+     * @var Octobro\Recaptcha\Models\Settings
      */
     public $settings;
 
