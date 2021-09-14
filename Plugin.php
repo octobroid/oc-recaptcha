@@ -83,7 +83,7 @@ class Plugin extends PluginBase
         // return []; // Remove this line to activate
 
         return [
-            'Octobro\Recaptcha\Components\MyComponent' => 'recaptcha',
+            'Octobro\Recaptcha\Components\Recaptcha' => 'recaptcha',
         ];
     }
 

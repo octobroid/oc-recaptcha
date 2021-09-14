@@ -3,7 +3,7 @@
 use Cms\Classes\ComponentBase;
 use Octobro\Recaptcha\Models\Settings;
 
-class Captcha extends ComponentBase
+class Recaptcha extends ComponentBase
 {
     /**
      * Settings instance
@@ -19,7 +19,7 @@ class Captcha extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'Captcha Component',
+            'name'        => 'Recaptcha Component',
             'description' => 'Displays the reCATPCHA widget.'
         ];
     }
