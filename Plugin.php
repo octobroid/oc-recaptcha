@@ -47,13 +47,13 @@ class Plugin extends PluginBase
     {
         Event::listen('backend.auth.extendSigninView', function($controller) {
             $settings = Settings::instance();
-            if ($settings->backend_captcha) {
+            if ($settings->backend_captcha && env('BACKEND_CAPTCHA', false)) {
                 return View::make("octobro.recaptcha::recaptcha", ['settings'=>$settings]);
             }
         });
         Event::listen('backend.user.login', function ($user) {
             $settings = Settings::instance();
-            if ($settings->backend_captcha) {
+            if ($settings->backend_captcha && env('BACKEND_CAPTCHA', false)) {
                 RecaptchaAuthorizer::instance()->verify();
             }
         });
